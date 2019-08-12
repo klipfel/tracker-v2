@@ -1,0 +1,17 @@
+<!-- Launch file for the processing of the frames on the jetson nano and not on a remote computer : all the nodes are launched on the jetson nano -->
+<launch>
+	<!-- Tracker-->
+	<node pkg="robot_tracker" name="tracker" type="tracker.py" output="screen" cwd ="node"> 
+	</node>
+	<!-- ZED camera driver -->
+	<include file="$(find zed_wrapper)/launch/zed.launch"/>
+	<!-- Bearing controller-->
+	<node pkg="robot_tracker" name="bearing_controller" type="bearing_controller.py" output="screen">
+	</node>
+	<!-- Motor driver -->
+	<node pkg="robot_tracker" name="motor" type="motor.py" output="screen">
+	</node>
+	<!-- Servomotor driver -->
+	<node pkg="robot_tracker" name="servomotor" type="servomotor.py" output="screen">
+	</node>
+</launch>
